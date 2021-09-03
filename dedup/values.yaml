@@ -1,0 +1,13 @@
+openg2p_dedup_es:
+  image: openg2p/elasticsearch
+
+openg2p_dedup_kibana:
+  image: docker.elastic.co/kibana/kibana:7.6.1
+  ELASTICSEARCH_HOSTS: http://openg2p-elasticsearch:9200
+
+openg2p_dedup_searchservice:
+  image: openg2p/searchservice
+  SEARCHSERVICE_ELASTIC_ENDPOINT: http://openg2p-elasticsearch:9200
+
+openg2p_dedup_ingress:
+  hostname: ""
