@@ -13,25 +13,12 @@ spec:
     metadata:
       labels:
         app: openg2p-dedup
-      # annotations:
-      #   deployTime: "{{ .Values.deployTime }}"
+      annotations:
+        deployTime: "{{ .Values.deployTime }}"
     spec:
       # imagePullSecrets:
       # - name: regcred
       containers:
-        - name: openg2p-elasticsearch
-          image: {{ .Values.openg2p_dedup_es.image }}
-          ports:
-            - containerPort: 9200
-
-        - name: openg2p-kibana
-          image: {{ .Values.openg2p_dedup_kibana.image }}
-          ports:
-            - containerPort: 5000
-          env:
-            - name: "ELASTICSEARCH_HOSTS"
-              value: "{{ .Values.openg2p_dedup_kibana.ELASTICSEARCH_HOSTS }}"
-        
         - name: openg2p-searchservice
           image: {{ .Values.openg2p_dedup_searchservice.image }}
           ports:
